@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     let viemMdoel = ViewModel()
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     var dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Spot>>()
     var isScroll = false
 
@@ -27,13 +27,14 @@ class ViewController: UIViewController {
         setTableView()
         bindRx()
     }
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        disposeBag = DisposeBag()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     func setView() {
@@ -46,9 +47,7 @@ class ViewController: UIViewController {
     }
     
     func setTableView() {
-        guard  navigationController != nil else {
-            return
-        }
+        guard  navigationController != nil else {return}
         if let table = self.tableView {
             table.register(UINib.init(nibName: "SpotCell", bundle: nil), forCellReuseIdentifier: "spotTableViewCell")
             table.backgroundColor = .white
@@ -56,6 +55,11 @@ class ViewController: UIViewController {
             table.rowHeight = UITableViewAutomaticDimension
             view.addSubview(table)
         }
+    }
+    
+    func bindRx() {
+        
+        guard let tableView = self.tableView else {return}
         
         dataSource.configureCell = { _, tableView, indexPath, spot in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "spotTableViewCell", for: indexPath) as? SpotCell else {
@@ -68,7 +72,7 @@ class ViewController: UIViewController {
             return cell
         }
         
-        tableView?.rx.willBeginDecelerating
+        tableView.rx.willBeginDecelerating
             .subscribe(onNext: { [weak self] Void in
                 let cells = self?.tableView?.visibleCells
                 let cell = cells?.last
@@ -79,23 +83,12 @@ class ViewController: UIViewController {
             })
             .addDisposableTo(disposeBag)
         
-        
-    }
-    
-    func bindRx() {
-        
-        guard let tableView = self.tableView else {return}
         viemMdoel.spotResult
             .drive(tableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
         
         viemMdoel.getData()
     }
-    
-    func textSize(text : String , font : UIFont , maxSize : CGSize) -> CGSize{
-        return text.boundingRect(with: maxSize, options: [.usesLineFragmentOrigin], attributes: [NSFontAttributeName : font], context: nil).size
-    }
-
 }
 
 class SpotCell: UITableViewCell {
@@ -111,6 +104,7 @@ class SpotCell: UITableViewCell {
     let disposeBag = DisposeBag()
     var dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, String>>()
     var viewModel = SpotCellViewModel()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setCollectionView()
@@ -129,11 +123,11 @@ class SpotCell: UITableViewCell {
         
         let controlEvent = photoCollectionView.rx.itemSelected
         controlEvent.asControlEvent()
-            .subscribe(onNext: { event in
+            .subscribe(onNext: { [weak self] event in
                 let detailVC = DetailViewController()
                 let nav = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
                 nav.show(detailVC, sender: nil)
-                detailVC.viewModel.url.onNext(self.dataSource[event.section].items[event.item])
+                detailVC.viewModel.url.onNext((self?.dataSource[event.section].items[event.item])!)
             })
             .addDisposableTo(disposeBag)
         
@@ -149,7 +143,6 @@ class SpotCell: UITableViewCell {
             .drive(photoCollectionView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
     }
-    
 }
 
 class PhotoCell: UICollectionViewCell {

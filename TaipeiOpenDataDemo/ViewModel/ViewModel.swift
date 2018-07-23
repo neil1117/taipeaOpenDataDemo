@@ -11,10 +11,11 @@ import RxDataSources
 import RxCocoa
 
 class ViewModel {
+    
     let disposeBag = DisposeBag()
     var sections = Variable<[SectionModel<String, Spot>]>([SectionModel(model: "", items: [])])
     var spotResult: Driver<[SectionModel<String, Spot>]>
-    let ser = URLSession.shared
+    let urlSession = URLSession.shared
     var offset = 0
     var isLoading = false
     var temp = [Spot]()
@@ -37,7 +38,7 @@ class ViewModel {
         }
         let url = URLRequest(url: URL(string: urlString)!)
         
-        ser.rx.json(request: url)
+        urlSession.rx.json(request: url)
             .single()
             .subscribe(onNext: { [weak self] (json) in
                 self?.parser(json: json)

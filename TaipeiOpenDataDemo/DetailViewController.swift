@@ -18,24 +18,27 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        let width = view.bounds.width
-        let height = width / 3 * 4
-        
-        imageView.frame = CGRect(x: 0, y: (view.bounds.height - height) / 2, width: width, height: height)
-        imageView.contentMode = .scaleAspectFit
-        view.addSubview(imageView)
+        setView()
         bindRx()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         disposeBag = DisposeBag()
+    }
+    
+    func setView() {
+        
+        view.backgroundColor = .white
+        let width = view.bounds.width
+        let height = width / 3 * 4
+        imageView.frame = CGRect(x: 0, y: (view.bounds.height - height) / 2, width: width, height: height)
+        imageView.contentMode = .scaleAspectFit
+        view.addSubview(imageView)
     }
     
     func bindRx() {
