@@ -15,6 +15,7 @@ import SDWebImage
 class ViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
+    
     let viemMdoel = ViewModel()
     var disposeBag = DisposeBag()
     var dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Spot>>()
@@ -62,6 +63,7 @@ class ViewController: UIViewController {
         guard let tableView = self.tableView else {return}
         
         dataSource.configureCell = { _, tableView, indexPath, spot in
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "spotTableViewCell", for: indexPath) as? SpotCell else {
                 fatalError("")
             }
@@ -74,12 +76,12 @@ class ViewController: UIViewController {
         
         tableView.rx.willBeginDecelerating
             .subscribe(onNext: { [weak self] Void in
+                
                 let cells = self?.tableView?.visibleCells
                 let cell = cells?.last
                 if cell?.tag == self?.viemMdoel.offset {
                     self?.viemMdoel.getData()
                 }
-                
             })
             .addDisposableTo(disposeBag)
         

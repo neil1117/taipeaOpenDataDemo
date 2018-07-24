@@ -24,7 +24,6 @@
 		C499D837210081A700E135B1 /* TaipeiOpenDataDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C499D836210081A700E135B1 /* TaipeiOpenDataDemoUITests.swift */; };
 		C499D8482103A8CB00E135B1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C499D8472103A8CB00E135B1 /* ViewModel.swift */; };
 		C499D84B21041B6200E135B1 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C499D84A21041B6200E135B1 /* Spot.swift */; };
-		C499D84F2104F98900E135B1 /* SpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C499D84E2104F98900E135B1 /* SpotCell.swift */; };
 		C4C7F9E921061CED0090A606 /* viewModelTestJson.json in Resources */ = {isa = PBXBuildFile; fileRef = C4C7F9E721061BDA0090A606 /* viewModelTestJson.json */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +71,6 @@
 		C499D838210081A700E135B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C499D8472103A8CB00E135B1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C499D84A21041B6200E135B1 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
-		C499D84E2104F98900E135B1 /* SpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCell.swift; sourceTree = "<group>"; };
 		C4C7F9E721061BDA0090A606 /* viewModelTestJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = viewModelTestJson.json; sourceTree = "<group>"; };
 		DFCA591E7C9F6FE312E8731F /* Pods-TaipeiOpenDataDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiOpenDataDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiOpenDataDemo/Pods-TaipeiOpenDataDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		EBB815178EEE3DCAC9F15551 /* Pods-TaipeiOpenDataDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiOpenDataDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiOpenDataDemoUITests/Pods-TaipeiOpenDataDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				C499D81D210081A700E135B1 /* Assets.xcassets */,
 				C499D81F210081A700E135B1 /* LaunchScreen.storyboard */,
 				C499D822210081A700E135B1 /* Info.plist */,
-				C499D84E2104F98900E135B1 /* SpotCell.swift */,
 				C42532012105002E000FBCA5 /* SpotCell.xib */,
 				C426C5682105B71E00A83B50 /* PhotoCell.xib */,
 			);
@@ -432,7 +429,6 @@
 				C426C56B2105BE1800A83B50 /* SpotCellViewModel.swift in Sources */,
 				C499D819210081A600E135B1 /* ViewController.swift in Sources */,
 				C499D84B21041B6200E135B1 /* Spot.swift in Sources */,
-				C499D84F2104F98900E135B1 /* SpotCell.swift in Sources */,
 				C499D8482103A8CB00E135B1 /* ViewModel.swift in Sources */,
 				C499D817210081A600E135B1 /* AppDelegate.swift in Sources */,
 				C426C56D2105F32B00A83B50 /* DetailViewController.swift in Sources */,

@@ -25,12 +25,9 @@ class ViewModel {
     }
     
     func getData() {
+        
         guard !isLoading else {return}
         isLoading = true
-        
-        if sections.value.count > 0 {
-            temp = sections.value[0].items
-        }
         
         var urlString = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=36847f3f-deff-4183-a5bb-800737591de5&limit=10"
         if offset != 0 {
@@ -53,11 +50,13 @@ class ViewModel {
             .addDisposableTo(disposeBag)
     }
     
+    //解析回來的josn結果，另外拆出方便測試
     func parser(json: Any) {
         if let data = json as? [String: Any] {
             guard let result = data["result"] as? [String: Any],
                 let list = result["results"] as? Array<[String: Any]>
                 else {return}
+            temp = sections.value[0].items
             offset = offset + list.count
             var spots = [Spot]()
             list.forEach({ (spotData) in
