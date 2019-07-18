@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
             .subscribe(onNext: {urlString in
                 self.imageView.sd_setImage(with: URL(string: urlString), completed: nil)
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
 }

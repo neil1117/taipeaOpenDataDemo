@@ -47,7 +47,7 @@ class ViewModel {
             }, onDisposed: {
                 
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
     
     //解析回來的josn結果，另外拆出方便測試

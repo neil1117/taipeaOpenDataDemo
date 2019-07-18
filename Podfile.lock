@@ -1,20 +1,23 @@
 PODS:
-  - Differentiator (2.0.2)
-  - RxCocoa (3.6.1):
-    - RxSwift (~> 3.6)
-  - RxDataSources (2.0.2):
-    - Differentiator (~> 2.0)
-    - RxCocoa (>= 3.6.1)
-    - RxSwift (>= 3.6.1)
-  - RxSwift (3.6.1)
-  - SDWebImage (4.4.1):
-    - SDWebImage/Core (= 4.4.1)
-  - SDWebImage/Core (4.4.1)
+  - Differentiator (4.0.1)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - SDWebImage (5.0.6):
+    - SDWebImage/Core (= 5.0.6)
+  - SDWebImage/Core (5.0.6)
 
 DEPENDENCIES:
-  - RxCocoa
+  - RxCocoa (~> 5)
   - RxDataSources
-  - RxSwift
+  - RxSwift (~> 5)
   - SDWebImage
 
 SPEC REPOS:
@@ -22,16 +25,18 @@ SPEC REPOS:
     - Differentiator
     - RxCocoa
     - RxDataSources
+    - RxRelay
     - RxSwift
     - SDWebImage
 
 SPEC CHECKSUMS:
-  Differentiator: caa9b3957981a2ac8e6b2eac8a676af461caa604
-  RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
-  RxDataSources: 7f190474a93a206c082c2d74c4cc9c8f7bea4feb
-  RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
-  SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
 
-PODFILE CHECKSUM: 024dc709d67ad50936c00c07ae4f7382e5d2b5e1
+PODFILE CHECKSUM: f897542b091a72b8cc8c6fb54df5348fbe9b0e73
 
 COCOAPODS: 1.5.3

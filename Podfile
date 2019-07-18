@@ -6,8 +6,8 @@ target 'TaipeiOpenDataDemo' do
   use_frameworks!
 
   # Pods for TaipeiOpenDataDemo
-  pod 'RxSwift'
-  pod 'RxCocoa'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
   pod 'RxDataSources'
   pod 'SDWebImage'
 
